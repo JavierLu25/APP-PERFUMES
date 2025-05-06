@@ -39,7 +39,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Inicio', 'url' => ['/site/index']],
+           ['label' => 'Inicio', 'url' => ['/site/index']],
+            
+            [
+                'label' => 'Gestionar perfumes',
+                'items' =>[
             ['label' => 'Sobre Nosotros', 'url' => ['/site/about']],
             ['label' => 'Contactenos', 'url' => ['/site/contact']],
             ['label' => 'Perfumes', 'url' => ['/perfumes/index']],
@@ -47,6 +51,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Duraciones', 'url' => ['/duraciones/index']],
             ['label' => 'Familiasolfativas', 'url' => ['/familiasolfativas/index']],
             ['label' => 'Notas', 'url' => ['/notas/index']],
+                ],
+            ],
+
             Yii::$app->user->isGuest
                 ? ['label' => 'Iniciar Sesion', 'url' => ['/site/login']]
                 : '<li class="nav-item">'

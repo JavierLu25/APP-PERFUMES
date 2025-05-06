@@ -30,12 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idPerfumes',
+            //'idPerfumes',
             'nombre',
             'marca',
             'año_lanzamiento',
             'genero',
-            //'presentacion_ml',
+            [
+                'attribute' => 'presentacion_ml',
+                'format' => 'html',
+                'value' => function ($model) {
+                    if ($model->presentacion_ml)
+                    return Html::img(Yii::getAlias('@web') . '/presentacion/'. $model->presentacion_ml, ['width' => '50px']);
+                return null;
+                    }
+            ],
+            
+            
             //'concentraciones_idconcentraciones',
             //'Familiasolfativas_idFamiliasolfativas',
             [

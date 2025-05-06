@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "Perfumes".
@@ -24,7 +25,7 @@ use Yii;
  */
 class Perfumes extends \yii\db\ActiveRecord
 {
-
+    public $imageFile;
 
     /**
      * {@inheritdoc}
@@ -46,9 +47,11 @@ class Perfumes extends \yii\db\ActiveRecord
             [['nombre', 'marca', 'año_lanzamiento', 'genero', 'presentacion_ml'], 'string', 'max' => 45],
             [['concentraciones_idconcentraciones'], 'exist', 'skipOnError' => true, 'targetClass' => Concentraciones::class, 'targetAttribute' => ['concentraciones_idconcentraciones' => 'idconcentraciones']],
             [['Familiasolfativas_idFamiliasolfativas'], 'exist', 'skipOnError' => true, 'targetClass' => Familiasolfativas::class, 'targetAttribute' => ['Familiasolfativas_idFamiliasolfativas' => 'idFamiliasolfativas']],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
-    }
+    } 
 
+ 
     /**
      * {@inheritdoc}
      */
@@ -65,6 +68,38 @@ class Perfumes extends \yii\db\ActiveRecord
             'Familiasolfativas_idFamiliasolfativas' => Yii::t('app', 'Familiasolfativas Id Familiasolfativas'),
         ];
     }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            if($this-> isNewRecord){
+                if(!$this->save(false)){
+                    return false;
+                }
+            }
+            if($this->imageFile instanceof UploadedFile){
+                $filename = $this->idPerfumes . '_' . $this->año_lanzamiento . '_perfume.' . $this->imageFile->extension;
+                $path = Yii::getAlias('@webroot/presentacion/') . $filename;
+ 
+                if($this->imageFile->saveAs($path)){
+                  if($this->presentacion_ml && $this->presentacion_ml !== $filename){
+                     $this->deletePresentacion();
+                  }
+                  $this->presentacion_ml = $filename;
+                }
+             }
+             return $this->save(false);    
+        } 
+        return false;
+    }
+
+    public function deletePresentacion(){
+        $path = Yii::getAlias('@webroot/presentacion/') . $this->presentacion_ml;
+         if(file_exists($path)){
+            unlink($path);
+         }
+      }
+  
 
     /**
      * Gets query for [[ConcentracionesIdconcentraciones]].

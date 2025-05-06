@@ -27,17 +27,34 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'idPerfumes',
-            'nombre',
-            'marca',
-            'año_lanzamiento',
-            'genero',
-            'presentacion_ml',
-            'concentraciones_idconcentraciones',
-            'Familiasolfativas_idFamiliasolfativas',
+    'model' => $model,
+    'attributes' => [
+        'idPerfumes',
+        'nombre',
+        'marca',
+        'año_lanzamiento',
+        'genero',
+        [
+            'attribute' => 'presentacion_ml',
+            'format' => 'html',
+            'value' => function ($model) {
+                if ($model->presentacion_ml) {
+                    return Html::img(Yii::getAlias('@web/presentacion/') . $model->presentacion_ml, [
+                        'alt' => 'Presentación',
+                        'style' => 'max-width:150px; max-height:150px;',
+                    ]);
+                } else {
+                    return Html::tag('span', '(no disponible)', [
+                        'style' => 'color:#d9534f; font-style:italic;',
+                    ]);
+                }
+            },
         ],
-    ]) ?>
+        'concentraciones_idconcentraciones',
+        'Familiasolfativas_idFamiliasolfativas',
+    ],
+]) ?>
+
+
 
 </div>

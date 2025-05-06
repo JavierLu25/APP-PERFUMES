@@ -10,8 +10,13 @@ use yii\widgets\ActiveForm;
 
 <div class="perfumes-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => [
+            'enctype' => 'multipart/form-data']
+    ]); ?>
 
+   
+    
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'marca')->textInput(['maxlength' => true]) ?>
@@ -20,7 +25,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'genero')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'presentacion_ml')->textInput(['maxlength' => true]) ?>
+    <?php if($model->presentacion_ml): ?>
+        <div class="from-group">
+            <?= Html::label('Presentacion') ?>
+        <div>
+        <?= Html::img(Yii::getAlias('@web' . '/presentacion/' . $model->presentacion_ml), ['style' => 'width: 200px']) ?>
+            </div>
+        </div>
+    <?php endif; ?>
+      
+    <?php //$form->field($model, 'presentacion_ml')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imageFile')->fileInput()->label('Seleccionar presentacion') ?>
 
     <?= $form->field($model, 'concentraciones_idconcentraciones')->textInput() ?>
 

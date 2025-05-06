@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Perfumes;
 use app\models\PerfumesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PerfumesController implements the CRUD actions for Perfumes model.
@@ -68,17 +70,37 @@ class PerfumesController extends Controller
     public function actionCreate()
     {
         $model = new Perfumes();
+        $message ='';
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idPerfumes' => $model->idPerfumes]);
-            }
-        } else {
+        if($this->request->isPost){
+           $transaction = Yii::$app->db->beginTransaction();
+           try{
+              if($model->load($this->request->post())) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                    if($model->save()&&(!$model->imageFile || $model->upload())){
+                        $transaction->commit();
+                        return $this->redirect(['view', 'idPerfumes' => $model->idPerfumes]);
+                }else{
+                    $message = 'Error al guardar presentacion';
+                    $transaction->rollBack();
+            
+                }
+              }else{
+                  $message = 'Error al cargar presentacion';
+                    $transaction->rollBack();
+                  
+              }
+           } catch (\Exception $e){
+               $transaction->rollBack();
+               $message = 'Error al guardar presentacion';
+           }
+        } else{
             $model->loadDefaultValues();
         }
 
         return $this->render('create', [
             'model' => $model,
+            'message' => $message,
         ]);
     }
 
@@ -92,13 +114,21 @@ class PerfumesController extends Controller
     public function actionUpdate($idPerfumes)
     {
         $model = $this->findModel($idPerfumes);
+        $message ='';
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+       if($this->request->isPost && $model->load($this->request->post())){
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+        if($model->save()&&(!$model->imageFile || $model->upload())){
             return $this->redirect(['view', 'idPerfumes' => $model->idPerfumes]);
-        }
+         }else{
+            $message = 'Error al guardar presentacion';
+           }
+       } 
 
         return $this->render('update', [
             'model' => $model,
+            'message' => $message,
         ]);
     }
 
@@ -111,7 +141,9 @@ class PerfumesController extends Controller
      */
     public function actionDelete($idPerfumes)
     {
-        $this->findModel($idPerfumes)->delete();
+        $model = $this->findModel($idPerfumes);
+        $model->deletePresentacion();   
+        $model->delete();
 
         return $this->redirect(['index']);
     }
