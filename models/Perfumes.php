@@ -64,8 +64,8 @@ class Perfumes extends \yii\db\ActiveRecord
             'año_lanzamiento' => Yii::t('app', 'Año Lanzamiento'),
             'genero' => Yii::t('app', 'Genero'),
             'presentacion_ml' => Yii::t('app', 'Presentacion Ml'),
-            'concentraciones_idconcentraciones' => Yii::t('app', 'Concentraciones Idconcentraciones'),
-            'Familiasolfativas_idFamiliasolfativas' => Yii::t('app', 'Familiasolfativas Id Familiasolfativas'),
+            'concentraciones_idconcentraciones' => Yii::t('app', 'Concentraciones'),
+            'Familiasolfativas_idFamiliasolfativas' => Yii::t('app', 'Familias Olfativas'),
         ];
     }
 
