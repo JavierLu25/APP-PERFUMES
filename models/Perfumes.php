@@ -26,6 +26,7 @@ use yii\web\UploadedFile;
 class Perfumes extends \yii\db\ActiveRecord
 {
     public $imageFile;
+    public $durations = [];
 
     /**
      * {@inheritdoc}
@@ -45,6 +46,7 @@ class Perfumes extends \yii\db\ActiveRecord
             [['concentraciones_idconcentraciones', 'Familiasolfativas_idFamiliasolfativas'], 'required'],
             [['concentraciones_idconcentraciones', 'Familiasolfativas_idFamiliasolfativas'], 'integer'],
             [['nombre', 'marca', 'año_lanzamiento', 'genero', 'presentacion_ml'], 'string', 'max' => 45],
+            [['durations'],'each', 'rule' => ['integer']],
             [['concentraciones_idconcentraciones'], 'exist', 'skipOnError' => true, 'targetClass' => Concentraciones::class, 'targetAttribute' => ['concentraciones_idconcentraciones' => 'idconcentraciones']],
             [['Familiasolfativas_idFamiliasolfativas'], 'exist', 'skipOnError' => true, 'targetClass' => Familiasolfativas::class, 'targetAttribute' => ['Familiasolfativas_idFamiliasolfativas' => 'idFamiliasolfativas']],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
@@ -66,6 +68,7 @@ class Perfumes extends \yii\db\ActiveRecord
             'presentacion_ml' => Yii::t('app', 'Presentacion Ml'),
             'concentraciones_idconcentraciones' => Yii::t('app', 'Concentraciones'),
             'Familiasolfativas_idFamiliasolfativas' => Yii::t('app', 'Familias Olfativas'),
+            'durations' => 'Duraciones',
         ];
     }
 
@@ -100,6 +103,39 @@ class Perfumes extends \yii\db\ActiveRecord
          }
       }
   
+
+      public function afterSave($insert, $changedAttributes)
+      {
+          parent::afterSave($insert, $changedAttributes);
+      
+          // Eliminar duraciones anteriores (si es update)
+          Duraciones::deleteAll(['Perfumes_idPerfumes' => $this->idPerfumes]);
+      
+          // Asociar nuevas duraciones
+          if (is_array($this->durations)) {
+              foreach ($this->durations as $duracionId) {
+                  $duracion = Duraciones::findOne($duracionId);
+                  if ($duracion) {
+                      $duracion->Perfumes_idPerfumes = $this->idPerfumes;
+                      $duracion->save(false);
+                  }
+              }
+          }
+      }      
+
+      public function beforeDelete()
+      {
+          if (!parent::beforeDelete()) {
+              return false;
+          }
+      
+          // Eliminar todas las relaciones de duraciones asociadas al perfume
+          Duraciones::deleteAll(['Perfumes_idPerfumes' => $this->idPerfumes]);
+      
+          return true;
+      }
+      
+
 
     /**
      * Gets query for [[ConcentracionesIdconcentraciones]].

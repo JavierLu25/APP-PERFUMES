@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'yiisoft/yii2-app-basic',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '3e9e4522a620973ec4d25dfbd9d5b16c9b1a4359',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -758,6 +758,17 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'twbs/bootstrap-icons' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'ce0e49dd063243118a115f17ad1fe1fe7576d552',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twbs/bootstrap-icons',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'yiisoft/yii2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -770,23 +781,21 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-basic' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '3e9e4522a620973ec4d25dfbd9d5b16c9b1a4359',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-bootstrap5' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '22.x-dev',
+            'version' => '22.9999999.9999999.9999999-dev',
             'reference' => 'bd19a9d413a5778f09ec6f8e2fe8105cd4bf11d6',
             'type' => 'yii2-extension',
             'install_path' => __DIR__ . '/../yiisoft/yii2-bootstrap5',
-            'aliases' => array(
-                0 => '2.0.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-composer' => array(

@@ -5093,6 +5093,49 @@
             "install-path": "../theseer/tokenizer"
         },
         {
+            "name": "twbs/bootstrap-icons",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/icons.git",
+                "reference": "ce0e49dd063243118a115f17ad1fe1fe7576d552"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/ce0e49dd063243118a115f17ad1fe1fe7576d552",
+                "reference": "ce0e49dd063243118a115f17ad1fe1fe7576d552",
+                "shasum": ""
+            },
+            "time": "2025-05-09T23:01:19+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "Official open source SVG icon library for Bootstrap",
+            "homepage": "https://icons.getbootstrap.com/",
+            "keywords": [
+                "bootstrap",
+                "icon font",
+                "icons",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/twbs/icons/issues",
+                "source": "https://github.com/twbs/icons/tree/v1.13.1"
+            },
+            "install-path": "../twbs/bootstrap-icons"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "version_normalized": "dev-master",
@@ -5219,8 +5262,8 @@
         },
         {
             "name": "yiisoft/yii2-bootstrap5",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "22.x-dev",
+            "version_normalized": "22.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap5.git",
@@ -5248,7 +5291,6 @@
                 "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
             },
             "time": "2025-04-11T09:27:32+00:00",
-            "default-branch": true,
             "type": "yii2-extension",
             "extra": {
                 "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\helpers\ArrayHelper;
 
 /**
  * PerfumesController implements the CRUD actions for Perfumes model.
@@ -76,6 +77,7 @@ class PerfumesController extends Controller
            $transaction = Yii::$app->db->beginTransaction();
            try{
               if($model->load($this->request->post())) {
+                $model->durations = Yii::$app->request->post('Perfumes')['durations'] ?? [];
                 $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
                     if($model->save()&&(!$model->imageFile || $model->upload())){
                         $transaction->commit();
@@ -117,6 +119,7 @@ class PerfumesController extends Controller
         $message ='';
 
        if($this->request->isPost && $model->load($this->request->post())){
+        $model->durations = Yii::$app->request->post('Perfumes')['durations'] ?? [];
         $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
 
         if($model->save()&&(!$model->imageFile || $model->upload())){
@@ -125,6 +128,8 @@ class PerfumesController extends Controller
             $message = 'Error al guardar presentacion';
            }
        } 
+
+       $model->durations = ArrayHelper::getColumn($model->getDuraciones()->asArray()->all(), 'idDuraciones');
 
         return $this->render('update', [
             'model' => $model,

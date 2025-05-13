@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Concentraciones;
 use app\models\Familiasolfativas;
+use app\models\Duraciones;
 
 /** @var yii\web\View $this */
 /** @var app\models\Perfumes $model */
@@ -15,7 +16,7 @@ use app\models\Familiasolfativas;
 
     <?php $form = ActiveForm::begin([
         'options' => [
-            'enctype' => 'multipart/form-data']
+            'enctype' => 'multipart/form-data'],
     ]); ?>
 
    
@@ -52,10 +53,49 @@ use app\models\Familiasolfativas;
                                                                                                                             ->asArray()
                                                                                                                             ->all(),'idFamiliasolfativas', 'nombre_completo'), ['prompt' => 'Seleccione una familia olfativa', 'required' => true]) ?>
 
-    <div class="form-group">
+   <div class="mb-3">
+    <?= Html::label('Seleccione las duraciones', 'duration-search',['class' => 'form-label'])?>
+    <div class="input-group">
+        <input type="text" id="duration-search" placeholder="Buscar duracion..." class="form-control">
+        <a href="<?=Yii::$app->urlManager->createUrl(['duraciones/create'])?>" class="btn btn-secondary" >
+        <i class="bi bi-plus"> </i>
+            Nueva duracion</a>
+    </div>
+    <?= Html::activeListBox($model, 'durations', 
+    ArrayHelper::map(Duraciones::find()->orderBy(['horas_estimadas' => SORT_ASC])->all(),
+        'idDuraciones', function ($duraciones) {
+            return $duraciones->horas_estimadas;
+    }), 
+    [
+        'multiple' => true, 
+        'size' => 10, 
+        'class' => 'form-control mt-2',
+        'selected' => $model->durations, // Aquí se asignan las duraciones seleccionadas
+    ]
+) ?>
+
+
+
+   </div>
+
+
+<div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    document.querySelector("#duration-search").addEventListener('input', function(){
+        let durations = document.querySelectorAll("#duration-select option");
+        durations.forEach(duraciones => {
+            if(duraciones.text.toLowerCase().includes(this.value.toLowerCase())){
+                duraciones.style.display = 'block';
+            }else{
+                .style.display = 'none';
+            }
+        });
+    });
+    </script>
