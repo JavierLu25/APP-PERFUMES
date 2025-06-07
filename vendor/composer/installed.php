@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-basic',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3e9e4522a620973ec4d25dfbd9d5b16c9b1a4359',
+        'reference' => 'cfe2a80415c85352d0937c65ff54c6cc0a33a7e0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'behat/gherkin' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b056c9108428194f75b6808e43d496f59fda53d3',
+            'reference' => '7eaf0ecc0a01252392045de36b2d3702bfe1094c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../behat/gherkin',
             'aliases' => array(
@@ -33,7 +33,7 @@
         'bower-asset/inputmask' => array(
             'pretty_version' => '5.x-dev',
             'version' => '5.9999999.9999999.9999999-dev',
-            'reference' => '9928d0258e77412df5b6dde576d2ecf57588c87c',
+            'reference' => 'b45bb673cbcee0ce8b1dc5ad22c3e019176fe148',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/inputmask',
             'aliases' => array(),
@@ -78,14 +78,12 @@
             'dev_requirement' => false,
         ),
         'codeception/codeception' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '6f0141d7702089d361ae64f76a47f81e13243ad0',
+            'pretty_version' => '5.3.0',
+            'version' => '5.3.0.0',
+            'reference' => '5894c6f9f2f4bdcbd2a1d73ed6dc91976ce8a012',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeception/codeception',
-            'aliases' => array(
-                0 => '5.2.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => true,
         ),
         'codeception/lib-asserts' => array(
@@ -116,9 +114,9 @@
             'dev_requirement' => true,
         ),
         'codeception/module-asserts' => array(
-            'pretty_version' => '3.0.0',
-            'version' => '3.0.0.0',
-            'reference' => '1b6b150b30586c3614e7e5761b31834ed7968603',
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'reference' => 'eb1f7c980423888f3def5116635754ae4a75bd47',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeception/module-asserts',
             'aliases' => array(),
@@ -223,7 +221,7 @@
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '024473a478be9df5fdaca2c793f2232fe788e414',
+            'reference' => '1720ddd719e16cf0db4eb1c6eca108031636d46c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
@@ -270,7 +268,7 @@
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '11.0.x-dev',
             'version' => '11.0.9999999.9999999-dev',
-            'reference' => 'b967f2e7355ade91cf4bae8e45ebe95bf501f79e',
+            'reference' => '2fe2103c645dc6ee4b50bcac03229cd6920557ba',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -315,7 +313,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => '11.5.x-dev',
             'version' => '11.5.9999999.9999999-dev',
-            'reference' => 'fc3e887c7f3f9917e1bf61e523413d753db00a17',
+            'reference' => '4ac4a838cb686a4ffd29bae5c10a709280f86b31',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -401,7 +399,7 @@
         'psy/psysh' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '85057ceedee50c49d4f6ecaff73ee96adb3b3625',
+            'reference' => '1731502ec245d5d82359388190e163193989b7ad',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(
@@ -430,7 +428,7 @@
         'sebastian/code-unit' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c5dbf7b22cfa2b4d9c2e814f3202bad97a84c75a',
+            'reference' => '54391c61e4af8078e5b276ab082b6d3c54c9ad64',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/code-unit',
             'aliases' => array(
@@ -578,7 +576,7 @@
         'symfony/console' => array(
             'pretty_version' => '7.3.x-dev',
             'version' => '7.3.9999999.9999999-dev',
-            'reference' => '9bd4d772b9678ebf398763403a8676b3010a18a7',
+            'reference' => 'aa8b412c06f682ba488b1d3589aa544cd1eff0c0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -616,7 +614,7 @@
         'symfony/event-dispatcher' => array(
             'pretty_version' => '7.3.x-dev',
             'version' => '7.3.9999999.9999999-dev',
-            'reference' => '045a5ba703c87b7b42abb397c1ba4cbd9deffea4',
+            'reference' => '497f73ac996a598c92409b44ac43b6690c4f666d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/event-dispatcher',
             'aliases' => array(),
@@ -714,7 +712,7 @@
         'symfony/service-contracts' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5ad38698559cf88b6296629e19b15ef3239c9d7a',
+            'reference' => 'f021b05a130d35510bd6b25fe9053c2a8a15d5d4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/service-contracts',
             'aliases' => array(
@@ -734,7 +732,7 @@
         'symfony/var-dumper' => array(
             'pretty_version' => '7.3.x-dev',
             'version' => '7.3.9999999.9999999-dev',
-            'reference' => '5be5bdd07600c270083d821a4b20697a47526311',
+            'reference' => '548f6760c54197b1084e1e5c71f6d9d523f2f78e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
@@ -772,7 +770,7 @@
         'yiisoft/yii2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'abd577d4a33eb89f5421bd0e77384bf4e625f427',
+            'reference' => '82bbe55bf8d8773014dd7cf9ff3019394af4201a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../yiisoft/yii2',
             'aliases' => array(
@@ -783,7 +781,7 @@
         'yiisoft/yii2-app-basic' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3e9e4522a620973ec4d25dfbd9d5b16c9b1a4359',
+            'reference' => 'cfe2a80415c85352d0937c65ff54c6cc0a33a7e0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

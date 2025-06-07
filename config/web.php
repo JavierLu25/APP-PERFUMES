@@ -8,15 +8,15 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'name' => 'App de Perfumes',
+    
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'dxNCoS60souLEbIbNhF-UqCn_e8rLTmm',
-        ],
+    'request' => [
+        'cookieValidationKey' => 'dxNCoS60souLEbIbNhF-UqCn_e8rLTmm',
+    ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
